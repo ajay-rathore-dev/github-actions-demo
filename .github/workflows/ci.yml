@@ -26,3 +26,12 @@ jobs:
 
     - name: Test
       run: dotnet test ./DemoApp.csproj --no-build --verbosity normal
+
+    - name: Publish Project
+      run: dotnet publish ./DemoApp.csproj -c Release -o publish
+
+    - name: Upload Build Files
+      uses: actions/upload-artifact@v3
+      with:
+        name: demo-app
+        path: publish
